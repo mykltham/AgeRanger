@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AgeRangerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AgeGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MinAge" Type="Int64" />
+    <Property Name="MaxAge" Type="Int64" />
+    <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="Age" Type="Int64" />
+  </EntityType>
+  <EntityContainer Name="AgeRangerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AgeGroups" EntityType="Self.AgeGroup" />
+    <EntitySet Name="People" EntityType="Self.Person" />
+  </EntityContainer>
+</Schema>

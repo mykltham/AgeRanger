@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AgeRangerModelStoreContainer" CdmEntityContainer="AgeRangerEntities">
+    <EntitySetMapping Name="AgeGroups">
+      <EntityTypeMapping TypeName="AgeRangerModel.AgeGroup">
+        <MappingFragment StoreEntitySet="AgeGroup">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MinAge" ColumnName="MinAge" />
+          <ScalarProperty Name="MaxAge" ColumnName="MaxAge" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="AgeRangerModel.Person">
+        <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
