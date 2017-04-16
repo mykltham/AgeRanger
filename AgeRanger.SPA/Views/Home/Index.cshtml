@@ -1,0 +1,133 @@
+﻿@{
+    ViewBag.Title = "AgeRanger";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section scripts {
+
+    <link href="~/Content/CustomStyle.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/app.js"></script>
+}
+<div ng-app="appModule" id="body">
+    <div ng-controller="appControl">
+
+        <!-- wrapper -->
+        <div style="width:90%; margin-left: auto; margin-right: auto; min-width: 500px;">
+
+            <h2>AgeRanger App</h2>
+            <table border="0" cellpadding="1" cellspacing="1" style="width:100%;">
+                <tr>
+                    <td width="50%" style="text-align: left; margin-left: 10px;" valign="top">
+                        <h4>Search by:</h4>
+                        <div>
+                            <label>First Name</label>
+                            <input type="text" ng-model="search.FirstName">
+                        </div>
+                        <div>
+                            <label>Last Name</label>
+                            <input type="text" ng-model="search.LastName">
+                        </div>
+                    </td>
+                    <td width="50%" style="text-align: left; margin-left: 10px;" valign="top">
+
+                        <div ng-show="Person.Id != '' ">
+                            <div>
+                                <h4>Update AgeRanger:</h4>
+                            </div>
+                            <div hidden="hidden">
+                                <label for="id">Id</label>
+                                <input type="text" ng-model="Person.Id" />
+                            </div>
+                            <div>
+                                <label for="firstname">First Name</label>
+                                <input type="text" ng-model="Person.FirstName" />
+                            </div>
+
+                            <div>
+                                <label for="lastname">Last Name</label>
+                                <input type="text" ng-model="Person.LastName" />
+                            </div>
+
+                            <div>
+                                <label for="age">Age</label>
+                                <input type="number" ng-model="Person.Age" />
+                            </div>
+                            <br />
+                            <div style="float: right; margin-bottom: 10px;">
+                                <button ng-click="update()">Update</button>
+                                <button ng-click="cancel()">Cancel</button>
+                                <br />
+                            </div>
+                        </div>
+
+                        <div ng-hide="Person.Id != '' ">
+                            <div>
+                                <h4>Add New AgeRanger:</h4>
+                            </div>
+                            <div>
+                                <label for="firstname">First Name</label>
+                                <input type="text" ng-model="Person.FirstName" />
+                            </div>
+
+                            <div>
+                                <label for="lastname">Last Name</label>
+                                <input type="text" ng-model="Person.LastName" />
+                            </div>
+
+                            <div>
+                                <label for="age">Age</label>
+                                <input type="number" ng-model="Person.Age" />
+                            </div>
+                            <br />
+                            <div style="float: right; margin-bottom: 10px;">
+                                <button ng-click="save()">Save</button>
+                                <button ng-click="clear()">Clear</button>
+                                <br />
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <!--<div style="border-top: solid 1px #282828; width:90%; margin-left: auto; margin-right: auto;"> </div>-->
+            <br />
+            <table id="ageRanger" ng-cloak border="0" cellpadding="1" cellspacing="1" style="width:100%;">
+                <thead>
+                    <tr>
+                        <th style="display: none;">Id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Age</th>
+                        <th>Age Group</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="items in personsData | filter:{FirstName: search.FirstName, LastName: search.LastName}">
+                        <td hidden="hidden">{{items.Id}}</td>
+                        <td>{{items.FirstName}}</td>
+                        <td>{{items.LastName}}</td>
+                        <td>{{items.Age}}</td>
+                        <td>{{items.AgeGroup}}</td>
+                        <td style="float:right; margin-right: 2px;">
+                            <button ng-model="$scope.Person"
+                                    ng-click="edit(personsData[$index])"
+                                    class="button2">
+                                Edit
+                            </button>
+                            <button ng-really-click="delete($index)" ng-really-message="Are you sure you want to delete?" class="button2">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <br />
+            <br />
+
+         </div> 
+        <!--wrapper -->
+
+    </div>
+</div>
